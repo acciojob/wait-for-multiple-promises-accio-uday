@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Multiple Promises Tracker</title>
 	<style>
 		table, th, td {
@@ -14,6 +13,7 @@
 	</style>
   </head>
   <body>
+	  
     <table>
       <thead>
         <tr>
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody id="output">
-		  <tr id="output">
+		  <tr id="loading">
 			  <td colspan="2">Loading...</td>
 		  </tr>
 	  </tbody>
@@ -38,7 +38,7 @@
 			});
 		}
 
-		const outputBody = document.getElementByID('output');
+		const outputBody = document.getElementById('output');
 
 
 		const promise1 = createPromise(1);
@@ -51,7 +51,7 @@
 		Promise.all([promise1, promise2, promise3])
 		.then(times => {
 			
-			const totalTime = (Date.now() - startTime) / 100;
+			const totalTime = (Date.now() - startTime) / 1000;
 
 
 			outputBody.innerHTML = '';
@@ -84,9 +84,8 @@
 		})
 		.catch(error => {
 			console.error('Error:', error);
-			outputBody.innerHTML = '<tr><td> colspan="2">Something went wrong!</td></tr>';
+			outputBody.innerHTML = '<tr><td colspan="2">Something went wrong!</td></tr>';
 		});
     </script>
   </body>
 </html>
-
